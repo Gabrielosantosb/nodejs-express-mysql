@@ -11,7 +11,7 @@ exports.create = (req, res) => {
 
   // Create a Tutorial
   const tutorial = new Tutorial({
-    title: req.body.title,
+    name: req.body.name,
     description: req.body.description,
     published: req.body.published || false
   });
@@ -29,9 +29,9 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database (with condition).
 exports.findAll = (req, res) => {
-  const title = req.query.title;
+  const name = req.query.name;
 
-  Tutorial.getAll(title, (err, data) => {
+  Tutorial.getAll(name, (err, data) => {
     if (err)
       res.status(500).send({
         message:

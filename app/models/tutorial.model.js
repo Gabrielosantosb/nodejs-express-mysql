@@ -2,7 +2,7 @@ const sql = require("./db.js");
 
 // constructor
 const Tutorial = function(tutorial) {
-  this.title = tutorial.title;
+  this.name = tutorial.name;
   this.description = tutorial.description;
   this.published = tutorial.published;
 };
@@ -39,11 +39,11 @@ Tutorial.findById = (id, result) => {
   });
 };
 
-Tutorial.getAll = (title, result) => {
+Tutorial.getAll = (name, result) => {
   let query = "SELECT * FROM tutorials";
 
-  if (title) {
-    query += ` WHERE title LIKE '%${title}%'`;
+  if (name) {
+    query += ` WHERE name LIKE '%${name}%'`;
   }
 
   sql.query(query, (err, res) => {
@@ -73,8 +73,8 @@ Tutorial.getAllPublished = result => {
 
 Tutorial.updateById = (id, tutorial, result) => {
   sql.query(
-    "UPDATE tutorials SET title = ?, description = ?, published = ? WHERE id = ?",
-    [tutorial.title, tutorial.description, tutorial.published, id],
+    "UPDATE tutorials SET name = ?, description = ?, published = ? WHERE id = ?",
+    [tutorial.name, tutorial.description, tutorial.published, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
