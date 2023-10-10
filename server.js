@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:4200",
+  origin: "https://crud-angular-3bsafgw4r-gabrielosantosb.vercel.app",
 };
 
 app.use(cors(corsOptions));
@@ -15,12 +15,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Começou a aplicação." });
 });
 
 require("./app/routes/tutorial.routes.js")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Servidor rodando na porta ${PORT}.`);
 });
